@@ -1,0 +1,22 @@
+{
+  "name": "playwright-workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiaMoreira/playwright-workshop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LiaMoreira/playwright-workshop/issues"
+  },
+  "homepage": "https://github.com/LiaMoreira/playwright-workshop#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.7.5"
+  }
+}
