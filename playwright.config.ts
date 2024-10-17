@@ -29,9 +29,9 @@ export default defineConfig({
 	use: {
 		/* Base URL to use in actions like `await page.goto('/')`. */
 		baseURL: "https://www.saucedemo.com/", // this will be the base to when we point to '/'
-		headless: true, // if the test runs on a headless browser
+		headless: false, // if the test runs on a headless browser
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-		trace: "on-first-retry", // to choose when we have a "picture" of the test run
+		trace: "on", // to choose when we have a "picture" of the test run
 	},
 
 	/* Configure projects for major browsers */
@@ -40,6 +40,12 @@ export default defineConfig({
 			name: "chromium",
 			use: { ...devices["Desktop Chrome"] },
 		},
+		/*
+		{
+			name: "Microsoft Edge",
+			use: { ...devices["Desktop Edge"], channel: "msedge" },
+		},
+		*/
 		/*
 		{
 			name: "firefox",

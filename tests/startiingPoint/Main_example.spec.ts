@@ -1,7 +1,4 @@
 import { test, expect } from "@playwright/test";
-import exp from "constants";
-import { chromium } from "playwright";
-import { title } from "process";
 
 test.describe("Main page", async () => {
 	test.beforeEach(async ({ page }) => {
@@ -17,7 +14,7 @@ test.describe("Main page", async () => {
 	});
 
 	test("Validate page", async ({ page }) => {
-		const appTitle = page.locator(".app_logo");
+		const appTitle = page.locator(".app_logo"); //done
 
 		await expect(appTitle).toHaveText("Swag Labs");
 		//We can't use this because it needed to be data-testid and not data-test
@@ -28,7 +25,7 @@ test.describe("Main page", async () => {
 	});
 
 	test("open an item and add them", async ({ page }) => {
-		const item = page.locator("[data-test='inventory-item']").nth(0); // the first one, this will move into a function
+		const item = page.locator("[data-test='inventory-item']").nth(0); // done
 
 		await item.locator("[data-test='item-4-title-link']").click();
 
@@ -36,20 +33,20 @@ test.describe("Main page", async () => {
 			page.locator("[data-test='inventory-item-name']")
 		).toContainText("Backpack");
 
-		await expect(page.locator("[data-test='add-to-cart']")).toBeEnabled();
+		await expect(page.locator("[data-test='add-to-cart']")).toBeEnabled(); // item pageObject //done
 
 		await expect(page.locator("[data-test='add-to-cart']")).toContainText(
 			"Add"
 		);
 
-		await page.locator("[data-test='add-to-cart']").click();
+		await page.locator("[data-test='add-to-cart']").click(); //done
 
-		await expect(page.locator("[data-test='remove']")).toBeEnabled();
+		await expect(page.locator("[data-test='remove']")).toBeEnabled(); //done
 
 		await expect(page.locator("[data-test='remove']")).toContainText("Remove");
 
 		await expect(
-			page.locator("[data-test='shopping-cart-badge']")
+			page.locator("[data-test='shopping-cart-badge']") //done
 		).toContainText("1");
 	});
 
@@ -61,11 +58,11 @@ test.describe("Main page", async () => {
 		await page.locator("[data-test='add-to-cart-sauce-labs-backpack']").click();
 
 		await expect(
-			page.locator("[data-test='remove-sauce-labs-backpack']")
+			page.locator("[data-test='remove-sauce-labs-backpack']") //done
 		).toBeEnabled();
 
 		await expect(
-			page.locator("[data-test='remove-sauce-labs-backpack']")
+			page.locator("[data-test='remove-sauce-labs-backpack']") // done
 		).toContainText("Remove");
 
 		await expect(
@@ -81,16 +78,16 @@ test.describe("Main page", async () => {
 		await page.locator("[data-test='add-to-cart-sauce-labs-onesie']").click();
 
 		// open cart shopping-cart-link
-		await page.locator("[data-test='shopping-cart-link']").click();
+		await page.locator("[data-test='shopping-cart-link']").click(); //done
 
 		// check title
-		await expect(page.locator("[data-test='title']")).toHaveText("Your Cart");
+		await expect(page.locator("[data-test='title']")).toHaveText("Your Cart"); // done
 
 		// remove item
 		await page.locator("[data-test='remove-sauce-labs-backpack']").click();
 
 		// back to main
-		await page.locator("[data-test='continue-shopping']").click();
+		await page.locator("[data-test='continue-shopping']").click(); // done
 
 		// check if item was removed
 		await expect(
