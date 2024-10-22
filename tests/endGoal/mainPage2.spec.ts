@@ -5,7 +5,8 @@ import { login } from "./pageObjects/login";
 
 mainPageFixtureTest.describe("Main page", async () => {
 	// we can still use the beforeEach hook
-    //option 1, define the login fixture inside the mainPage function and call it
+	//option 1, define the login fixture inside the mainPage function and call it
+
 	mainPageFixtureTest.beforeEach(async ({ page, logintest }) => {
 		await page.goto("/");
 
@@ -17,11 +18,17 @@ mainPageFixtureTest.describe("Main page", async () => {
 		await newLogin.login("standard_user", "secret_sauce");
 	});
 
-    // defining a function for our login fixture and call it here
-    // as we can see we can use nested fixtures ( see notes )
-    loginFixtureTest.beforeEach(async ({ logintest }) => {
-        logintest.login("standard_user", "secret_sauce")
-    })
+	// we ca use nested fixtures but not like this, when we define a describe, all fixtures need to be
+	// defined inside that test function ( notes are wrong here )
+
+	// what we can do is do another describe using the other funtion and then use it
+	/*
+	loginFixtureTest.describe ("", async () => {
+		loginFixtureTest.beforeEach(async ({ logintest }) => {
+			logintest.login("standard_user", "secret_sauce");
+		});
+	});	
+	*/
 
 	// we need to use our new function instead of the test function
 	// we need to use our new fixture instead of the page one
@@ -32,7 +39,7 @@ mainPageFixtureTest.describe("Main page", async () => {
 		await expect(mainPagetest.getItem()).toHaveCount(6);
 	});
 
-    // here we need to have the item fxture define inside the mainPageFixtureTest funcion and then call it on the props object
+	// here we need to have the item fxture define inside the mainPageFixtureTest funcion and then call it on the props object
 	mainPageFixtureTest(
 		"open an item and add them",
 		async ({ mainPagetest, itemtest }) => {

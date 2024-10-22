@@ -1,7 +1,7 @@
 import { expect } from "@playwright/test";
 import { mainPageFixtureTest } from "./fixtures/mainPageFixture";
 
-mainPageFixtureTest.describe("Main page", async () => {
+mainPageFixtureTest.describe.only("Main page", async () => {
 	// we don't need this anymore, because it's done inside the fixture
 	// but in case we need it, we still have this methods available either way
 
